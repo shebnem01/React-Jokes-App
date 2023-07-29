@@ -1,0 +1,49 @@
+.jokes-card{
+    padding: 10px ;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.action{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+.action button{
+    font-weight: bold;
+    cursor: pointer;
+   color: #aaa;
+}
+.action .count{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 50%;
+    
+}
+.green{
+    border: 2px solid green;
+}
+.yellow{
+    border: 2px solid yellow;
+}
+.orange{
+    border: 2px solid orange;
+}
+.small-icon img{
+    width: 45px;
+    height: 45px;
+    margin-left: 50px;
+    padding: 5px;
+    border-radius:35px ;
+    background-color: #6a67ce;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    
+}

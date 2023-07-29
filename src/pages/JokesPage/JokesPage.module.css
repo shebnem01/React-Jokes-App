@@ -1,0 +1,14 @@
+.jokes-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00334e;
+    font-weight: 500;
+    height: 100vh;
+    margin: 40px auto;
+}
+@media(max-width:1200px){
+    .jokes-page{
+        flex-direction: column;
+    }
+}

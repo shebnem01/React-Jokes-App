@@ -1,0 +1,16 @@
+.loader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #fff;
+    flex: 1;
+    height: 100%;
+    font-size: 60px;
+    display: flex;
+    font-style: italic;
+    align-items: center;
+    justify-content: center;
+    color: #ff4f81;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
