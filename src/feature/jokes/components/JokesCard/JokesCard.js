@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import styles from "./JokesCard.module.css";
 import img1 from "assets/1.png";
 import img2 from "assets/2.png";
@@ -6,16 +6,22 @@ import img3 from "assets/3.png";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 const JokesCard = ({ joke, id, vote, i, handleIncrease, handleDecrease }) => {
   const [defaultVote, setDefaultVote] = useState(0);
-  const increaseVote = (id) => {
-    let neVote = defaultVote + 1;
-    handleIncrease(id, neVote);
-    setDefaultVote(neVote);
-  };
-  const decreaseVote = (id) => {
-    let neVote = defaultVote - 1;
-    handleDecrease(id, neVote);
-    setDefaultVote(neVote);
-  };
+  const increaseVote = useCallback(
+    (id) => {
+      let neVote = defaultVote + 1;
+      handleIncrease(id, neVote);
+      setDefaultVote(neVote);
+    },
+    [defaultVote]
+  );
+  const decreaseVote = useCallback(
+    (id) => {
+      let neVote = defaultVote - 1;
+      handleDecrease(id, neVote);
+      setDefaultVote(neVote);
+    },
+    [defaultVote]
+  );
 
   return (
     <li className={styles["jokes-card"]}>

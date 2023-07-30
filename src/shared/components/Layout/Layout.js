@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
@@ -22,31 +22,37 @@ const Layout = () => {
       setIsLoader(false);
     })();
   }, []);
-  const sortProcess = (vote, voteID) => {
-    let newJokeList = [...jokes];
-    let currentItem = newJokeList.findIndex((item) => item.id === voteID);
-    newJokeList[currentItem].vote = vote;
-    let jokeSort = newJokeList.sort((a, b) => b.vote - a.vote);
-    setJokes(jokeSort);
-  };
+  const sortProcess = useCallback(
+    (vote, voteID) => {
+      let newJokeList = [...jokes];
+      let currentItem = newJokeList.findIndex((item) => item.id === voteID);
+      newJokeList[currentItem].vote = vote;
+      let jokeSort = newJokeList.sort((a, b) => b.vote - a.vote);
+      setJokes(jokeSort);
+    },
+    [jokes]
+  );
   const handleIncrease = (voteID, vote) => {
     sortProcess(vote, voteID);
   };
   const handleDecrease = (voteID, vote) => {
     sortProcess(vote, voteID);
   };
-  const addJokes = (joke) => {
-    if (!joke.trim()) return false;
-    let newJokesList = [...jokes];
-    let newJoke = {
-      id: nanoid(),
-      joke,
-      vote: 0,
-    };
-    newJokesList = [...newJokesList, newJoke];
-    setJokes(newJokesList);
-    toast.success("Joke added");
-  };
+  const addJokes = useCallback(
+    (joke) => {
+      if (!joke.trim()) return false;
+      let newJokesList = [...jokes];
+      let newJoke = {
+        id: nanoid(),
+        joke,
+        vote: 0,
+      };
+      newJokesList = [...newJokesList, newJoke];
+      setJokes(newJokesList);
+      toast.success("Joke added");
+    },
+    [jokes]
+  );
   return (
     <Routes>
       <Route path="/" element={<Navigate to={ROUTER.HOME} replace />} />
